@@ -1,5 +1,9 @@
+"use client";
+
 import { Product } from "@/data/products";
 import { clientEnv } from "@/config/env";
+import { useCartStore } from "@/store/cart";
+import { gtag } from "@/lib/gtag";
 
 const categoryColors: Record<string, string> = {
   스프레이: "bg-blue-100 text-blue-700",
@@ -20,6 +24,25 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const addItem = useCartStore((s) => s.addItem);
+
+  const handleAddToCart = () => {
+    addItem(product);
+    gtag.event("add_to_cart", {
+      currency: "KRW",
+      value: product.price,
+      items: [
+        {
+          item_id: String(product.id),
+          item_name: product.name,
+          item_category: product.category,
+          price: product.price,
+          quantity: 1,
+        },
+      ],
+    });
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
       {/* 이미지 플레이스홀더 */}
@@ -66,6 +89,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             {clientEnv.currency === "KRW" ? "원" : clientEnv.currency}
           </span>
         </div>
+
+        {/* 장바구니 담기 */}
+        <button
+          onClick={handleAddToCart}
+          className="w-full py-2.5 bg-emerald-500 text-white rounded-full font-medium text-sm hover:bg-emerald-600 active:scale-[0.98] transition-all"
+        >
+          장바구니 담기
+        </button>
       </div>
     </div>
   );
