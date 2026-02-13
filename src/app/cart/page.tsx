@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useCartStore } from "@/store/cart";
 import { clientEnv } from "@/config/env";
@@ -8,11 +8,7 @@ import { clientEnv } from "@/config/env";
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalPrice } =
     useCartStore();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [mounted] = useState(typeof window !== 'undefined');
 
   if (!mounted) {
     return (

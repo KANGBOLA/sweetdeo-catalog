@@ -9,7 +9,7 @@ import { loadTossPayments, TossPaymentsWidgets } from "@tosspayments/tosspayment
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, totalPrice, clearCart } = useCartStore();
+  const { items, totalPrice } = useCartStore();
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({

@@ -1,16 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useCartStore } from "@/store/cart";
 
 export default function CartButton() {
   const totalItems = useCartStore((s) => s.totalItems);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [mounted] = useState(typeof window !== 'undefined');
 
   const count = mounted ? totalItems() : 0;
 

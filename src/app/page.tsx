@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import FilterBar from "./components/FilterBar";
 import ProductGrid from "./components/ProductGrid";
 import { products, Category, FreeFrom } from "@/data/products";
-import { clientEnv } from "@/config/env";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<Category | "전체">("전체");

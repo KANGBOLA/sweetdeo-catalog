@@ -62,7 +62,8 @@ function SuccessContent() {
     }
 
     confirmPayment();
-  }, [searchParams, clearCart]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (status === "loading") {
     return (
