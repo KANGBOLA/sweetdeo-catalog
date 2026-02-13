@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Header from "./components/Header";
 import FilterBar from "./components/FilterBar";
 import ProductGrid from "./components/ProductGrid";
+import ReviewSection from "./components/ReviewSection";
 import { products, Category, FreeFrom } from "@/data/products";
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
           onFreeFromToggle={handleFreeFromToggle}
         />
         <ProductGrid products={filteredProducts} />
+        <ReviewSection />
       </main>
     </div>
   );
