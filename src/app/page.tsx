@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import FilterBar from "./components/FilterBar";
 import ProductGrid from "./components/ProductGrid";
 import ReviewSection from "./components/ReviewSection";
+import SponsorCTA from "./components/SponsorCTA";
+import Footer from "./components/Footer";
 import { products, Category, FreeFrom } from "@/data/products";
 
 export default function Home() {
@@ -43,7 +45,9 @@ export default function Home() {
         />
         <ProductGrid products={filteredProducts} />
         <ReviewSection />
+        <SponsorCTA />
       </main>
+      <Footer />
     </div>
   );
 }
